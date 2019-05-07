@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.demo{
+			border-radius:50%;
+			background:orange;
+			width:80px;
+			height:80px;
+			position:relative;
+			left:0;
+			top:0;
+		}
+		.control{
+			width:300px;
+		}
+		.control button:first-child{
+			float:left;
+		}
+		.control button:nth-child(2){
+			float:right;
+		}
+	</style>
+</head>
+<body>
+	<div class="demo"></div>
+	<div class="control">
+		<button>right=></button>
+		<button><=left</button>
+	</div>
+	<script type="text/javascript" src="./lib/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		// 原生JS实现
+		// var oDemo=document.getElementsByClassName('demo')[0],
+		// 	oButton=document.getElementsByTagName('button')[0],
+		// 	oLeft=document.getElementsByTagName('button')[1],
+		// 	timer,
+		// 	timer2
+		// oButton.onclick=function(){
+		// 	timer=setInterval(function(){
+		// 		var l=Number(oDemo.style.left.slice(0,oDemo.style.left.length-2))+10;
+		// 		if(l>300){
+		// 			oDemo.style.left='300px';
+		// 			clearInterval(timer);
+		// 		}else{
+		// 			oDemo.style.left=l+'px';
+		// 		}
+		// 	},100)
+		// }
+		// oLeft.onclick=function(){
+		// 	timer2=setInterval(function(){
+		// 		var l=Number(oDemo.style.left.slice(0,oDemo.style.left.length-2))-10;
+		// 		if(l<0){
+		// 			oDemo.style.left='0';
+		// 			clearInterval(timer2);
+		// 		}else{
+		// 			oDemo.style.left=l+'px';
+		// 		}
+		// 	},100)
+		// }
+
+		// jQuery实现
+		$('button').eq(0).click(function(){
+			$('.demo').animate({left:300},2000);
+		})
+		$('button').eq(1).click(function(){
+			$('.demo').animate({left:0},2000);
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		function runAsync(){
+			var p=new Promise(function(resolve,reject){
+				setTimeout(function(){
+					console.log('执行完成');
+					let obj={name:'sunfly',age:29,sex:'male'}
+					resolve(obj);
+				},2000)
+			})
+			return p;
+		}
+		function runAsync2(){
+			var p2=new Promise(function(resolve,reject){
+				setTimeout(function(){
+					console.log('执行ok');
+					let obj={name:'lucy',age:27,sex:'female'}
+					resolve(obj);
+				},2000)
+			})
+			return p2;
+		}
+		function runAsync3(){
+			var p3=new Promise(function(resolve,reject){
+				setTimeout(function(){
+					console.log('第三个回调');
+					resolve('第三个进程结束');
+				})
+			})
+			return p3;
+		}
+		runAsync()
+		.then(function(data){
+			console.log(data);
+			return runAsync2()
+		}).then(function(data){
+			console.log(data);
+			return runAsync3()
+		}).then(function(data){
+			console.log(data);
+		})
+	</script>
+</body>
+</html>

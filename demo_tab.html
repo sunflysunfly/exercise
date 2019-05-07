@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+		li{
+			list-style:none;float:left;padding:10px;border:1px solid #ccc;border-top-left-radius:2px;border-top-right-radius:2px;
+		}
+		ul{
+			margin-top:20px;margin-left:20px;
+		}
+		ul li:first-child{
+			border-right:0;
+		}
+		ul li:nth-child(2){
+			border-right:0;
+		}
+		.active{
+			/*border:2px solid #99f;*/
+			outline:#99f solid 2px;
+		}
+		.my-tab{
+			clear:both;margin-left:20px;width:400px;height:80px;border:1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-bind:class="{active:currentTab==1}" @click="changeTab(1)">tab1</li>
+			<li v-bind:class="{active:currentTab==2}" @click="changeTab(2)">tab2</li>
+			<li v-bind:class="{active:currentTab==3}" @click="changeTab(3)">tab3</li>
+		</ul>
+		<component v-bind:is="currentComponent"></component>
+	</div>
+	<script type="text/javascript" src="./lib/vue.js"></script>
+	<script type="text/javascript">
+		const component1={
+			template:`
+			<div class="my-tab">
+			This is component1
+			</div>
+			`
+		}
+		const component2={
+			template:`
+			<div class="my-tab">
+			This is component2
+			</div>
+			`
+		}
+		const component3={
+			template:`
+			<div class="my-tab">
+			This is component3
+			</div>
+			`
+		}
+		const vm=new Vue({
+			el:'#app',
+			data:{
+				currentTab:1,
+				currentComponent:'component1'
+			},
+			methods:{
+				changeTab(val){
+					this.currentTab=val;
+					this.currentComponent='component'+val;
+				}
+			},
+			components:{
+				component1,
+				component2,
+				component3
+			}
+		})
+	</script>
+</body>
+</html>

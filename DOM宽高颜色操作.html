@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="wrapper">dd</div>
+	<script type="text/javascript" src="./lib/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		// 原生HTML
+		// const oWrap=document.getElementsByClassName('wrapper')[0];
+		// oWrap.onclick=function(){
+		// 	oWrap.innerHTML='hello,world!';
+		// 	oWrap.style.width='100px';
+		// 	oWrap.style.height='100px';
+		// 	nColor1=parseInt(Math.random()*256);
+		// 	nColor2=parseInt(Math.random()*256);
+		// 	nColor3=parseInt(Math.random()*256);
+		// 	sColor='rgb('+nColor1+','+nColor2+','+nColor3+')';
+		// 	oWrap.style.color=sColor;
+		// 	nColor4=parseInt(Math.random()*256);
+		// 	nColor5=parseInt(Math.random()*256);
+		// 	nColor6=parseInt(Math.random()*256);
+		// 	bgColor='rgb('+nColor4+','+nColor5+','+nColor6+')';
+		// 	oWrap.style.backgroundColor=bgColor;
+		// }
+
+		// jQuery操作DOM宽高颜色
+		$('.wrapper').click(function(){
+			$(this).html('hello,world!').css({width:100,height:100,backgroundColor:'deeppink',color:'#fff'})
+		})
+	</script>
+</body>
+</html>

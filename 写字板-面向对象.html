@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+		#app{
+			background:#ccc;
+			width:800px;
+			height:500px;
+			position:relative;
+		}
+		.ball{
+			width:30px;
+			height:30px;
+			border-radius:50%;
+			background-color: red;
+			position:absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- <div class="ball"></div> -->
+	</div>
+	<script type="text/javascript">
+		class ball{
+			constructor(x,y){
+				this.x=x;
+				this.y=y;
+			}
+			generate(){
+				var div=document.createElement('div');
+				div.className='ball';
+				div.style.left=(this.x-15)+'px';
+				div.style.top=(this.y-15)+'px';
+				return div;
+			}
+		}
+		var oApp=document.getElementById('app'),
+			flag=false;
+		oApp.onmousedown=function(){
+			flag=true;
+		}
+		oApp.onmouseup=function(){
+			flag=false;
+		}
+		oApp.onmousemove=function(event){
+			if(flag){
+				var x=event.clientX;
+				var y=event.clientY;
+				var ele=new ball(x,y).generate();
+				oApp.appendChild(ele);
+			}
+		}
+	</script>
+</body>
+</html>
